@@ -1,21 +1,19 @@
-module.exports = (app) => {
-	const UsersTable = require("../controllers/controller");
-	var router = require("express").Router();
+const UsersTable = require("../models/users");
+const express = require("express");
+const router = express.Router();
+const db = require("../models/index");
+const Sequelize = require("sequelize");
+const Op = Sequelize.Op;
 
-	// Retrieve all Tutorials
-	router.get("/", UsersTable.findAll);
+// Get gig list
+router.get("/", (req, res) =>
+	UsersTable.findAll()
+		.then((UsersTable) =>
+			res.render("UsersTable", {
+				UsersTable,
+			})
+		)
+		.catch((err) => res.render("error", { error: err }))
+);
 
-	// Create a new Tutorial
-	router.post("/", UsersTable.create);
-	// // Retrieve all published Tutorials
-	// router.get("/published", tutorials.findAllPublished);
-	// // Retrieve a single Tutorial with id
-	// router.get("/:id", tutorials.findOne);
-	// // Update a Tutorial with id
-	// router.put("/:id", tutorials.update);
-	// // Delete a Tutorial with id
-	// router.delete("/:id", tutorials.delete);
-	// // Delete all Tutorials
-	// router.delete("/", tutorials.deleteAll);
-	// app.use("/api/tutorials", router);
-};
+module.exports = router;

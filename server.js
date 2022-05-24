@@ -2,9 +2,9 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 var corsOptions = {
-	origin: "http://localhost:8081",
+	origin: "http://localhost:8080",
 };
-require("./routes/users.routes")(app);
+app.use("/users", require("./routes/users.routes"));
 app.use(cors(corsOptions));
 // parse requests of content-type - application/json
 app.use(express.json());
@@ -12,15 +12,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 //-------------------
 
-//call seq file connection
-const db = require("./models/index");
-db.sequelize.sync({ force: true }).then(() => {
-	console.log("Drop and re-sync db.");
-});
-
 // simple route
 app.get("/", (req, res) => {
-	res.json({ message: "Welcome to bezkoder application." });
+	res.json({ message: "Welcome " });
 });
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
