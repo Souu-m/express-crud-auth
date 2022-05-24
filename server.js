@@ -1,15 +1,29 @@
-const logEvents = require("./logEvents");
+const express = require("express");
+const cors = require("cors");
+const app = express();
+var corsOptions = {
+	origin: "http://localhost:8081",
+};
+require("./routes/users.routes")(app);
+app.use(cors(corsOptions));
+// parse requests of content-type - application/json
+app.use(express.json());
+// parse requests of content-type - application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: true }));
+//-------------------
 
-const EventEmitter = require("events");
-
-class MyEmitter extends EventEmitter {}
-
-const myEmitter = new MyEmitter();
-
-myEmitter.on("log", (msg) => {
-	logEvents(msg);
+//call seq file connection
+const db = require("./models/index");
+db.sequelize.sync({ force: true }).then(() => {
+	console.log("Drop and re-sync db.");
 });
 
-setTimeout(() => {
-	myEmitter.emit("log", "log event emmited!");
-}, 2000);
+// simple route
+app.get("/", (req, res) => {
+	res.json({ message: "Welcome to bezkoder application." });
+});
+// set port, listen for requests
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+	console.log(`Server is running on port ${PORT}.`);
+});
