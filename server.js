@@ -4,7 +4,6 @@ const app = express();
 var corsOptions = {
 	origin: "http://localhost:8080",
 };
-app.use("/users", require("./routes/users.routes"));
 app.use(cors(corsOptions));
 // parse requests of content-type - application/json
 app.use(express.json());
@@ -12,12 +11,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 //-------------------
 
+//--call sync-
+const db = require("./models");
+db.sequelize.sync({ force: false });
+
 // simple route
 app.get("/", (req, res) => {
 	res.json({ message: "Welcome " });
 });
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
+require("./routes/users.routes")(app);
 app.listen(PORT, () => {
 	console.log(`Server is running on port ${PORT}.`);
 });

@@ -1,19 +1,7 @@
-const UsersTable = require("../models/users");
-const express = require("express");
-const router = express.Router();
-const db = require("../models/index");
-const Sequelize = require("sequelize");
-const Op = Sequelize.Op;
+module.exports = (app) => {
+	const UsersAccount = require("../controllers/controller");
+	var router = require("express").Router();
 
-// Get gig list
-router.get("/", (req, res) =>
-	UsersTable.findAll()
-		.then((UsersTable) =>
-			res.render("UsersTable", {
-				UsersTable,
-			})
-		)
-		.catch((err) => res.render("error", { error: err }))
-);
-
-module.exports = router;
+	router.get("/", UsersAccount.findAll);
+	app.use("/api/users", router);
+};
