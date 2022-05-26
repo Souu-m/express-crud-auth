@@ -6,4 +6,5 @@ module.exports = {
 	database: "Users",
 	port: 1433,
 	dialect: "mssql",
+	operatorsAliases: 0,
 };

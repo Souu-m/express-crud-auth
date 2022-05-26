@@ -27,7 +27,15 @@ module.exports = (sequelize, Sequelize) => {
 		},
 		{
 			freezeTableName: true,
+			timestamps: false,
+
+			// If don't want createdAt
+			createdAt: false,
+
+			// If don't want updatedAt
+			updatedAt: false,
 		}
 	);
+
 	return users;
 };

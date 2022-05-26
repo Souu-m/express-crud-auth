@@ -20,5 +20,5 @@ try {
 const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
-db.UsersAccount = require("./users.model")(sequelize, Sequelize);
+db.Users = require("./users.model")(sequelize, Sequelize);
 module.exports = db;

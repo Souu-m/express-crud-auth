@@ -1,7 +1,9 @@
-module.exports = (app) => {
-	const UsersAccount = require("../controllers/controller");
-	var router = require("express").Router();
+const express = require("express");
+const router = express.Router();
+const db = require("../models");
 
-	router.get("/", UsersAccount.findAll);
-	app.use("/api/users", router);
-};
+router.get("/all", (req, res) => {
+	db.Users.findAll().then((users) => res.send(users));
+});
+
+module.exports = router;

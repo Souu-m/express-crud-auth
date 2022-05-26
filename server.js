@@ -15,13 +15,11 @@ app.use(express.urlencoded({ extended: true }));
 const db = require("./models");
 db.sequelize.sync({ force: false });
 
-// simple route
-app.get("/", (req, res) => {
-	res.json({ message: "Welcome " });
-});
+const apiRoutes = require("./routes/users.routes");
+app.use("/api", apiRoutes);
+
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
-require("./routes/users.routes")(app);
 app.listen(PORT, () => {
 	console.log(`Server is running on port ${PORT}.`);
 });
