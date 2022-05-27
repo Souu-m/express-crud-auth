@@ -20,5 +20,11 @@ try {
 const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
-db.Users = require("./users.model")(sequelize, Sequelize);
+//-----add tables into db ----
+db.UsersAccount = require("./users.model")(
+	sequelize,
+	Sequelize,
+	Sequelize.DataTypes
+);
+
 module.exports = db;

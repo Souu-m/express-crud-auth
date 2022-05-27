@@ -15,8 +15,9 @@ app.use(express.urlencoded({ extended: true }));
 const db = require("./models");
 db.sequelize.sync({ force: false });
 
-const apiRoutes = require("./routes/users.routes");
-app.use("/api", apiRoutes);
+//---calling routes----
+const UsersRouter = require("./routes/users.routes");
+app.use("/api", UsersRouter);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
