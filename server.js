@@ -16,6 +16,7 @@ const db = require("./models");
 db.sequelize.sync({ force: false });
 
 //---calling routes----
+//(test with http://localhost:8080/api/allUsers)
 const UsersRouter = require("./routes/users.routes");
 app.use("/api", UsersRouter);
 
