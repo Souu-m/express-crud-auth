@@ -3,6 +3,8 @@ const router = express.Router();
 const db = require("../models");
 const UsersAccountController = require("../controllers/UsersController");
 
+
+//go to the middleware puis userscontroler
 router.post("/adduser", UsersAccountController.AddUser);
 router.get("/allUsers", UsersAccountController.getAllUsers);
 
