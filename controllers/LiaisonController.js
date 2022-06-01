@@ -7,8 +7,8 @@ const getAll = async (req, res) => {
 };
 
 const getOne = async (req, res) => {
-	let users = await db.SITE.findAll({
-		include: "CODE_WILAYA_WILAYA",
+	let users = await db.SITE.findOne({
+		include: [{ model: db.LIAISON }],
 	});
 	res.status(200).send(users);
 };

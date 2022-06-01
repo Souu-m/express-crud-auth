@@ -23,14 +23,14 @@ function initModels(sequelize) {
 	var UsersAccount = _UsersAccount(sequelize, DataTypes);
 	var WILAYA = _WILAYA(sequelize, DataTypes);
 	/******************************************* */
-	SITE.belongsTo(BRANCHE, { as: "CODE_BR_BRANCHE", foreignKey: "CODE_BR" });
-	BRANCHE.hasMany(SITE, { as: "SITEs", foreignKey: "CODE_BR" });
+	SITE.belongsTo(BRANCHE, { as: "BRANCHE", foreignKey: "CODE_BR" });
+	BRANCHE.hasMany(SITE, { as: "SITE", foreignKey: "CODE_BR" });
 
 	SITE.belongsTo(WILAYA, {
-		as: "CODE_WILAYA_WILAYA",
+		as: "WILAYA",
 		foreignKey: "CODE_WILAYA",
 	});
-	WILAYA.hasMany(SITE, { as: "SITEs", foreignKey: "CODE_WILAYA" });
+	WILAYA.hasMany(SITE, { as: "SITE", foreignKey: "CODE_WILAYA" });
 
 	//***************************************/
 	DATE.belongsToMany(LIAISON, { through: INTERCONNECTION });
@@ -95,7 +95,6 @@ function initModels(sequelize) {
 		DATE,
 		INTERCONNECTION,
 		LIAISON,
-
 		MODEM,
 		ROUTER,
 		SITE,
