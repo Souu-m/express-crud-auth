@@ -1,16 +1,21 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('BRANCHE', {
-    CODE_BR: {
-      type: DataTypes.STRING(10),
+  return sequelize.define('ABONNEMENT', {
+    ID_AB: {
+      autoIncrement: true,
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    NOM_BR: {
-      type: DataTypes.STRING(50),
+    DATE_ACTIVATION: {
+      type: DataTypes.DATEONLY,
       allowNull: true
     },
-    SECTEUR_DACTIVITE: {
+    DATE_EXPIRATION: {
+      type: DataTypes.DATEONLY,
+      allowNull: true
+    },
+    Type: {
       type: DataTypes.STRING(50),
       allowNull: true
     },
@@ -20,15 +25,15 @@ module.exports = function(sequelize, DataTypes) {
     }
   }, {
     sequelize,
-    tableName: 'BRANCHE',
+    tableName: 'ABONNEMENT',
     schema: 'dbo',
     timestamps: false,
     indexes: [
       {
-        name: "PK_BRANCHE",
+        name: "PK_ABONNEMENT",
         unique: true,
         fields: [
-          { name: "CODE_BR" },
+          { name: "ID_AB" },
         ]
       },
     ]

@@ -1,34 +1,46 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('ROUTER', {
-    IP_ROUTER: {
+  return sequelize.define('EQUIPEMENT', {
+    NS_MODEM: {
       type: DataTypes.STRING(50),
       allowNull: false,
       primaryKey: true
     },
-    LOOP_BACK: {
+    NS_SIM: {
       type: DataTypes.STRING(50),
       allowNull: true
     },
-    REFERENCE: {
+    IMEI_MODEM: {
       type: DataTypes.STRING(50),
       allowNull: true
     },
-    RMQ_ROUTER: {
+    ADR_IP: {
+      type: DataTypes.STRING(50),
+      allowNull: true
+    },
+    ADR_WAN_RSM: {
+      type: DataTypes.STRING(50),
+      allowNull: true
+    },
+    ADR_WAN_CLIENT: {
+      type: DataTypes.STRING(50),
+      allowNull: true
+    },
+    RMRQ: {
       type: DataTypes.STRING(250),
       allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'ROUTER',
+    tableName: 'EQUIPEMENT',
     schema: 'dbo',
     timestamps: false,
     indexes: [
       {
-        name: "PK_ROUTER",
+        name: "PK_EQUIPEMENT",
         unique: true,
         fields: [
-          { name: "IP_ROUTER" },
+          { name: "NS_MODEM" },
         ]
       },
     ]
