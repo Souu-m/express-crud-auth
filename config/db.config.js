@@ -1,10 +1,10 @@
 module.exports = {
 	user: "AppDB",
 	password: "app-pfe",
-	server: "DESKTOP-BKUI1E4",
+	server: "DESKTOP-GCD9M4B",
 	host: "localhost",
-	database: "BDD_NF",
+	database: "GestionBddNaftal",
 	port: 1433,
 	dialect: "mssql",
 	operatorsAliases: 0,
-};
+}
