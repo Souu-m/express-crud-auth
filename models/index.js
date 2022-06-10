@@ -26,13 +26,11 @@ db.sequelize = sequelize;
 //-----add tables into db ----
 
 db.BRANCHE = initModels(sequelize).BRANCHE;
-db.BRANCHEMENT = initModels(sequelize).BRANCHEMENT;
-db.DATE = initModels(sequelize).DATE;
-db.INTERCONNECTION = initModels(sequelize).INTERCONNECTION;
 db.LIAISON = initModels(sequelize).LIAISON;
-db.MODEM = initModels(sequelize).MODEM;
-db.ROUTER = initModels(sequelize).ROUTER;
+db.ABONNEMENT = initModels(sequelize).ABONNEMENT;
 db.SITE = initModels(sequelize).SITE;
 db.WILAYA = initModels(sequelize).WILAYA;
+db.EQUIPEMENT = initModels(sequelize).EQUIPEMENT;
 db.UsersAccount = initModels(sequelize).UsersAccount;
+
 module.exports = db;
