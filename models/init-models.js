@@ -5,6 +5,7 @@ var _EQUIPEMENT = require("./EQUIPEMENT");
 var _LIAISON = require("./LIAISON");
 var _SITE = require("./SITE");
 var _WILAYA = require("./WILAYA");
+var UsersAccounts = require("./UsersAccount");
 
 function initModels(sequelize) {
 	var ABONNEMENT = _ABONNEMENT(sequelize, DataTypes);
@@ -13,6 +14,7 @@ function initModels(sequelize) {
 	var LIAISON = _LIAISON(sequelize, DataTypes);
 	var SITE = _SITE(sequelize, DataTypes);
 	var WILAYA = _WILAYA(sequelize, DataTypes);
+	var UsersAccount = UsersAccounts(sequelize, DataTypes);
 
 	LIAISON.belongsTo(ABONNEMENT, { as: "ABONNEMENT", foreignKey: "ID_AB" });
 	ABONNEMENT.hasMany(LIAISON, { as: "LIAISON", foreignKey: "ID_AB" });
@@ -32,6 +34,7 @@ function initModels(sequelize) {
 		LIAISON,
 		SITE,
 		WILAYA,
+		UsersAccount,
 	};
 }
 module.exports = initModels;

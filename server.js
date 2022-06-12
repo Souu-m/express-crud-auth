@@ -1,8 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const verifyJWT = require('./middleware/verifyJWT');
-const cookieParser = require('cookie-parser');
+// const verifyJWT = require("./middleware/verifyJWT");
+// const cookieParser = require("cookie-parser");
 
 var corsOptions = {
 	origin: "http://localhost:3000",
@@ -13,7 +13,7 @@ app.use(cors(corsOptions));
 // parse requests of content-type - application/json
 app.use(express.json());
 // for cookies
-app.use(cookieParser());
+// app.use(cookieParser());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 //-------------------
@@ -31,11 +31,10 @@ const LiaisonRouter = require("./routes/liaison.routes");
 app.use("/api", LiaisonRouter);
 const auth = require("./routes/auth.routes");
 app.use("/api", auth);
-const refresh = require("./routes/refresh");
-app.use("/api", refresh);
+// const refresh = require("./routes/refresh");
+// app.use("/api", refresh);
 
-app.use(verifyJWT);
-
+// app.use(verifyJWT);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
