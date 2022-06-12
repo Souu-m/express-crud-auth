@@ -1,5 +1,5 @@
 var DataTypes = require("sequelize").DataTypes;
-var _ABONNEMENT = require("./ABONNEMENT");
+
 var _BRANCHE = require("./BRANCHE");
 var _EQUIPEMENT = require("./EQUIPEMENT");
 var _LIAISON = require("./LIAISON");
@@ -8,7 +8,6 @@ var _WILAYA = require("./WILAYA");
 var UsersAccounts = require("./UsersAccount");
 
 function initModels(sequelize) {
-	var ABONNEMENT = _ABONNEMENT(sequelize, DataTypes);
 	var BRANCHE = _BRANCHE(sequelize, DataTypes);
 	var EQUIPEMENT = _EQUIPEMENT(sequelize, DataTypes);
 	var LIAISON = _LIAISON(sequelize, DataTypes);
@@ -16,8 +15,6 @@ function initModels(sequelize) {
 	var WILAYA = _WILAYA(sequelize, DataTypes);
 	var UsersAccount = UsersAccounts(sequelize, DataTypes);
 
-	LIAISON.belongsTo(ABONNEMENT, { as: "ABONNEMENT", foreignKey: "ID_AB" });
-	ABONNEMENT.hasMany(LIAISON, { as: "LIAISON", foreignKey: "ID_AB" });
 	SITE.belongsTo(BRANCHE, { as: "BRANCHE", foreignKey: "CODE_BR" });
 	BRANCHE.hasMany(SITE, { as: "SITE", foreignKey: "CODE_BR" });
 	LIAISON.belongsTo(EQUIPEMENT, { as: "EQUIPEMENT", foreignKey: "NS_MODEM" });
@@ -28,7 +25,6 @@ function initModels(sequelize) {
 	WILAYA.hasMany(SITE, { as: "SITE", foreignKey: "CODE_WILAYA" });
 
 	return {
-		ABONNEMENT,
 		BRANCHE,
 		EQUIPEMENT,
 		LIAISON,

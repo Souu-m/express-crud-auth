@@ -27,7 +27,7 @@ db.sequelize = sequelize;
 
 db.BRANCHE = initModels(sequelize).BRANCHE;
 db.LIAISON = initModels(sequelize).LIAISON;
-db.ABONNEMENT = initModels(sequelize).ABONNEMENT;
+
 db.SITE = initModels(sequelize).SITE;
 db.WILAYA = initModels(sequelize).WILAYA;
 db.EQUIPEMENT = initModels(sequelize).EQUIPEMENT;

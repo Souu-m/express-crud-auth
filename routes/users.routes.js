@@ -4,16 +4,8 @@ const db = require("../models");
 const UsersAccountController = require("../controllers/UsersController");
 
 //go to the middleware puis userscontroler
-router.post(
-	"/adduser",
-	// verifyRoles(ROLES_LIST.Admin),
-	UsersAccountController.AddUser
-);
-router.get(
-	"/allUsers",
-	// verifyRoles(ROLES_LIST.Admin),
-	UsersAccountController.getAllUsers
-);
+router.post("/adduser", UsersAccountController.AddUser);
+router.get("/allUsers", UsersAccountController.getAllUsers);
 
 // router.put("/updateUser",verifyRoles(ROLES_LIST.Admin),UsersAccountController.updateUser);
 // router.delete("/deleteUser",verifyRoles(ROLES_LIST.Admin),UsersAccountController.deleteUser);
