@@ -7,19 +7,36 @@ const getAll = async (req, res) => {
 			{
 				model: db.LIAISON,
 				as: "LIAISON",
-				include: [
-					{
-						model: db.EQUIPEMENT,
-						as: "EQUIPEMENT",
-					},
-					{
-						model: db.ABONNEMENT,
-						as: "ABONNEMENT",
-					},
-				],
+				include: {
+					model: db.EQUIPEMENT,
+					as: "EQUIPEMENT",
+				},
 			},
 			"WILAYA",
 			"BRANCHE",
+		],
+	});
+	res.status(200).send(users);
+};
+
+const getTry = async (req, res) => {
+	let users = await db.LIAISON.findAll({
+		include: [
+			{
+				model: db.SITE,
+				as: "SITE",
+				include: [
+					{
+						model: db.WILAYA,
+						as: "WILAYA",
+					},
+					{
+						model: db.BRANCHE,
+						as: "BRANCHE",
+					},
+				],
+			},
+			"EQUIPEMENT",
 		],
 	});
 	res.status(200).send(users);
@@ -44,7 +61,6 @@ const getMobilis = async (req, res) => {
 				],
 			},
 			"EQUIPEMENT",
-			"ABONNEMENT",
 		],
 	});
 	res.status(200).send(users);
@@ -62,8 +78,6 @@ const getOne = async (req, res) => {
 				include: {
 					model: db.EQUIPEMENT,
 					as: "EQUIPEMENT",
-					model: db.ABONNEMENT,
-					as: "ABONNEMENT",
 				},
 			},
 			"WILAYA",
@@ -77,4 +91,5 @@ module.exports = {
 	getAll,
 	getOne,
 	getMobilis,
+	getTry,
 };

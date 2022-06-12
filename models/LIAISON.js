@@ -29,6 +29,14 @@ module.exports = function (sequelize, DataTypes) {
 				type: DataTypes.STRING(20),
 				allowNull: false,
 			},
+			Date_Act: {
+				type: DataTypes.DATEONLY,
+				allowNull: true,
+			},
+			Date_exp: {
+				type: DataTypes.DATEONLY,
+				allowNull: true,
+			},
 			MISE_SERVICE: {
 				type: DataTypes.DATEONLY,
 				allowNull: true,
