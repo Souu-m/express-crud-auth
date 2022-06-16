@@ -12,6 +12,7 @@ const AddUser = async (req, res) => {
 		FirstName: req.body.firstname,
 		Branch: req.body.branch,
 		Password: req.body.password,
+		roles: req.body.roles,
 	};
 	const duplicate = await db.UsersAccount.findOne({
 		where: {
@@ -29,10 +30,12 @@ const AddUser = async (req, res) => {
 			FirstName: req.body.firstname,
 			Branch: req.body.branch,
 			Password: hashPwd,
+			roles: req.body.roles,
 		});
 
 		res.status(201).json({ success: `New user ${req.body.username} created!` });
 	} catch (err) {
+		console.log("is it here?");
 		res.status(500).json({ message: err.message });
 	}
 };

@@ -43,8 +43,32 @@ const getTry = async (req, res) => {
 };
 
 const getMobilis = async (req, res) => {
-	let users = await db.LIAISON.findOne({
+	let users = await db.LIAISON.findAll({
 		where: { TYPE: "MOBILIS" },
+		include: [
+			{
+				model: db.SITE,
+				as: "SITE",
+				include: [
+					{
+						model: db.WILAYA,
+						as: "WILAYA",
+					},
+					{
+						model: db.BRANCHE,
+						as: "BRANCHE",
+					},
+				],
+			},
+			"EQUIPEMENT",
+		],
+	});
+	res.status(200).send(users);
+};
+
+const getOoredeoo = async (req, res) => {
+	let users = await db.LIAISON.findAll({
+		where: { TYPE: "OOREDOO" },
 		include: [
 			{
 				model: db.SITE,
@@ -91,5 +115,6 @@ module.exports = {
 	getAll,
 	getOne,
 	getMobilis,
+	getOoredeoo,
 	getTry,
 };

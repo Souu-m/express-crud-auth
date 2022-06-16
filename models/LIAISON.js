@@ -9,7 +9,7 @@ module.exports = function (sequelize, DataTypes) {
 				primaryKey: true,
 			},
 			CODE_SITE: {
-				type: DataTypes.STRING(11),
+				type: DataTypes.STRING(9),
 				allowNull: false,
 				references: {
 					model: "SITE",
