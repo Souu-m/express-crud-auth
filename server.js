@@ -30,12 +30,12 @@ const refresh = require("./routes/refresh");
 app.use("/api", refresh);
 const logout = require("./routes/logOut");
 app.use("/api", logout);
-
+const LiaisonRouter = require("./routes/liaison.routes");
+app.use("/api", LiaisonRouter);
 app.use(verifyJWT);
 const UsersRouter = require("./routes/users.routes");
 app.use("/api", UsersRouter);
-const LiaisonRouter = require("./routes/liaison.routes");
-app.use("/api", LiaisonRouter);
+
 // set port, listen for requests
 
 app.listen(PORT, () => {
