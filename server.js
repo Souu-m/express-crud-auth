@@ -24,6 +24,7 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
 //-------------------
 app.use(cookieParser());
+
 const auth = require("./routes/auth.routes");
 app.use("/api", auth);
 const refresh = require("./routes/refresh");
@@ -32,9 +33,9 @@ const logout = require("./routes/logOut");
 app.use("/api", logout);
 const LiaisonRouter = require("./routes/liaison.routes");
 app.use("/api", LiaisonRouter);
-app.use(verifyJWT);
 const UsersRouter = require("./routes/users.routes");
 app.use("/api", UsersRouter);
+app.use(verifyJWT);
 
 // set port, listen for requests
 

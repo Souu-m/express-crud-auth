@@ -3,7 +3,7 @@ module.exports = {
 	password: "app-pfe",
 	server: "DESKTOP-GCD9M4B",
 	host: "localhost",
-	database: "NETWORK_MANAGER_NAFTAL",
+	database: "NAFTAL_MANAGER",
 	port: 1433,
 	dialect: "mssql",
 	operatorsAliases: 0,

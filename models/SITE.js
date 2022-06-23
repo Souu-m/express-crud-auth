@@ -6,10 +6,9 @@ module.exports = function (sequelize, DataTypes) {
 			ID: {
 				type: DataTypes.INTEGER,
 				allowNull: false,
-				autoIncrement: true,
 			},
 			CODE_WILAYA: {
-				type: DataTypes.INTEGER,
+				type: DataTypes.STRING(20),
 				allowNull: false,
 				references: {
 					model: "WILAYA",
@@ -34,15 +33,11 @@ module.exports = function (sequelize, DataTypes) {
 				allowNull: false,
 			},
 			LATITUDE: {
-				type: DataTypes.FLOAT,
+				type: DataTypes.STRING(50),
 				allowNull: true,
 			},
 			LONGITUDE: {
-				type: DataTypes.FLOAT,
-				allowNull: true,
-			},
-			RMRQ: {
-				type: DataTypes.STRING(250),
+				type: DataTypes.STRING(50),
 				allowNull: true,
 			},
 		},
